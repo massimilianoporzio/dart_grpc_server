@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+service GroceriesService {
+    rpc createItem (Item) returns (Item);
+    rpc createCategory (Category) returns (Category);
+    
+    rpc getAllItems (Empty) returns (Items);
+    rpc getAllCategories (Empty) returns (Categories);
+
+    rpc getItem (Item) returns (Item);
+    rpc getCategory (Category) returns (Category);
+
+    rpc editItem (Item) returns (Item);
+    rpc editCategory (Category) returns (Category);
+
+    rpc deleteItem (Item) returns (Item);
+    rpc deleteCategory (Category) returns (Category);
+
+    rpc getAllItemsByCategory(Category) returns (AllItemsOfCategory);
+
+}
+message Empty {}
+
+message Item {
+    int32 id = 1; //priority for accessing data "1" is the tag representing id
+    string name = 2;
+    int32 categoryId = 3;
+    // reserved 2; // if previously used tag is no longer used
+}
+
+message Category {
+    int32 id = 1;
+    string name = 2;
+}
+
+message Items {
+    repeated Item items = 1; //list of message of type Item
+}
+
+message Categories {
+    repeated Category categories = 1;
+}
+
+message AllItemsOfCategory{
+    int32 categoryId = 3; // 3 because on Item the tag is 3
+    repeated Item items = 1;
+}
