@@ -38,7 +38,7 @@ class Client {
         var option = int.tryParse(stdin.readLineSync()!);
         if (option == null) {
         } else {
-          switch (option!) {
+          switch (option) {
             case 1:
               break;
             case 2:
