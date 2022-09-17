@@ -21,8 +21,8 @@ class CategoriesServices implements ICategoriesServices {
 
   @override
   List<Category>? getCategories() {
-    return categories.map((e) {
-      return helper.getCategoryFromMap(e);
+    return categories.map((category) {
+      return helper.getCategoryFromMap(category);
     }).toList();
   }
 
