@@ -35,50 +35,53 @@ class Client {
         print('👉 10: Delete category \n');
         print('👉 11: Get all products of given category');
 
-        var option = int.parse(stdin.readLineSync()!);
-        switch (option) {
-          case 1:
-            break;
-          case 2:
-            break;
-          case 3:
-            break;
-          case 4:
-            break;
-          case 5:
-            break;
-          case 6:
-            break;
-          case 7:
-            print('Enter category name');
-            var name = stdin.readLineSync()!;
-            var category = await _findCategoryByName(name);
-            if (category.id != 0) {
-              //0 is the default (non corrisp ad alcun ogg)
-              print(
-                  '🔴 categoty already exists: category: ${category.name} (id: ${category.id})');
-            } else {
-              //NO CATEGORY WITH THIS NAME
-              //POSSO CREARNE UNA NUOVA
-              category = Category()
-                ..id = Random(999).nextInt(9999)
-                ..name = name;
-              //RPC CALLING THE SERVER METHOD
-              response = await stub!.createCategory(category);
-              print(
-                  '✅ category created: name ${category.name} (id: ${category.id})');
-            }
-            break;
-          case 8:
-            break;
-          case 9:
-            break;
-          case 10:
-            break;
-          case 11:
-            break;
-          default:
-            print('invalid option 😓');
+        var option = int.tryParse(stdin.readLineSync()!);
+        if (option == null) {
+        } else {
+          switch (option!) {
+            case 1:
+              break;
+            case 2:
+              break;
+            case 3:
+              break;
+            case 4:
+              break;
+            case 5:
+              break;
+            case 6:
+              break;
+            case 7:
+              print('Enter category name');
+              var name = stdin.readLineSync()!;
+              var category = await _findCategoryByName(name);
+              if (category.id != 0) {
+                //0 is the default (non corrisp ad alcun ogg)
+                print(
+                    '🔴 categoty already exists: category: ${category.name} (id: ${category.id})');
+              } else {
+                //NO CATEGORY WITH THIS NAME
+                //POSSO CREARNE UNA NUOVA
+                category = Category()
+                  ..id = Random(999).nextInt(9999)
+                  ..name = name;
+                //RPC CALLING THE SERVER METHOD
+                response = await stub!.createCategory(category);
+                print(
+                    '✅ category created: name ${category.name} (id: ${category.id})');
+              }
+              break;
+            case 8:
+              break;
+            case 9:
+              break;
+            case 10:
+              break;
+            case 11:
+              break;
+            default:
+              print('invalid option 😓');
+          }
         }
       } catch (e) {
         print(e);
