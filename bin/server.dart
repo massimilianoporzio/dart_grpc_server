@@ -5,9 +5,8 @@ import 'package:grpc/grpc.dart';
 
 class GroceriesService extends GroceriesServiceBase {
   @override
-  Future<Category> createCategory(ServiceCall call, Category request) {
-    // TODO: implement createCategory
-    throw UnimplementedError();
+  Future<Category> createCategory(ServiceCall call, Category category) async {
+    return categoriesServices.createCategory(category)!;
   }
 
   @override
