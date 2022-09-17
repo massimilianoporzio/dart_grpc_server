@@ -52,6 +52,13 @@ class Client {
             case 5:
               break;
             case 6:
+              response = await stub!
+                  .getAllCategories(Empty()); //lancia il metodo sul server
+              print(' --- Store product categories ---');
+              response.categories.forEach((category) {
+                print(
+                    '${category.icon}: ${category.name} (id: ${category.id})');
+              });
               break;
             case 7:
               print('Enter category name');

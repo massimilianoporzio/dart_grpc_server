@@ -4,13 +4,16 @@ class HelperMethods {
   Category getCategoryFromMap(Map category) {
     var _idTag = 1;
     var _nameTag = 2; //COME IN PROTO FILE
+    var _iconTag = 3;
     //legate alla struttura mappa nei dati
     int _id = category['id']; //prendo 'id' dalla mappa in input
     String _name = category['name'];
+    String _icon = category['icon'];
     return Category.fromJson('''{
       "$_idTag": $_id,
-      "$_nameTag":"$_name"}
-      ''');
+      "$_nameTag":"$_name",
+      "$_iconTag":"$_icon"
+      }''');
   }
 
   Item getItemFromMap(Map item) {

@@ -1,9 +1,9 @@
 final categories = <Map<String, dynamic>>[
-  {'id': 1, 'name': 'fruits'},
-  {'id': 2, 'name': 'vegetables'},
-  {'id': 3, 'name': 'bakery'},
-  {'id': 4, 'name': 'grain'},
-  {'id': 5, 'name': 'dairy'}
+  {'id': 1, 'name': 'fruits', 'icon': '🍒'},
+  {'id': 2, 'name': 'vegetables', 'icon': '🥕'},
+  {'id': 3, 'name': 'bakery', 'icon': '🍰'},
+  {'id': 4, 'name': 'grain', 'icon': '🌾'},
+  {'id': 5, 'name': 'dairy', 'icon': '🧀'}
 ];
 
 final items = <Map<String, dynamic>>[

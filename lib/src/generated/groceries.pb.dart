@@ -117,6 +117,7 @@ class Category extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Category', createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id', $pb.PbFieldType.O3)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'icon')
     ..hasRequiredFields = false
   ;
 
@@ -124,6 +125,7 @@ class Category extends $pb.GeneratedMessage {
   factory Category({
     $core.int? id,
     $core.String? name,
+    $core.String? icon,
   }) {
     final _result = create();
     if (id != null) {
@@ -131,6 +133,9 @@ class Category extends $pb.GeneratedMessage {
     }
     if (name != null) {
       _result.name = name;
+    }
+    if (icon != null) {
+      _result.icon = icon;
     }
     return _result;
   }
@@ -172,6 +177,15 @@ class Category extends $pb.GeneratedMessage {
   $core.bool hasName() => $_has(1);
   @$pb.TagNumber(2)
   void clearName() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get icon => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set icon($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIcon() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIcon() => clearField(3);
 }
 
 class Items extends $pb.GeneratedMessage {

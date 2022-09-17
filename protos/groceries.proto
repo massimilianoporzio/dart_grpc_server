@@ -31,6 +31,7 @@ message Item {
 message Category {
     int32 id = 1;
     string name = 2;
+    string icon = 3;
 }
 
 message Items {
