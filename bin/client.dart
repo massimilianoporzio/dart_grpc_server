@@ -21,6 +21,7 @@ class Client {
 
     while (executionInProgress) {
       try {
+        print(Process.runSync("clear", [], runInShell: true).stdout);
         print('🎉 ---- Welcome to the dart store API ---- 🎉');
         print('     ---- what do you want to do? ----');
         print('👉 1: View all products');
@@ -89,6 +90,7 @@ class Client {
       }
 
       print('Do you wish to exit the store? (Y/n)');
+
       var result = stdin.readLineSync() ?? 'y';
       executionInProgress = result.toLowerCase() != 'y'; //finché non dico yes
     } //MAIN LOOP DEL CLIENT
