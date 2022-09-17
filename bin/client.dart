@@ -67,22 +67,41 @@ class Client {
               if (category.id != 0) {
                 //0 is the default (non corrisp ad alcun ogg)
                 print(
-                    '🔴 categoty already exists: category: ${category.name} (id: ${category.id})');
+                    '🔴 categoty already exists: category: ${category.name} (id: ${category.id}) - icon ${category.icon}');
               } else {
                 //NO CATEGORY WITH THIS NAME
-                //POSSO CREARNE UNA NUOVA
-                category = Category()
-                  ..id = Random(999).nextInt(9999)
-                  ..name = name;
-                //RPC CALLING THE SERVER METHOD
-                response = await stub!.createCategory(category);
-                print(
-                    '✅ category created: name ${category.name} (id: ${category.id})');
+                //chiedo l'icona
+                print('Enter category icon');
+                var icon = stdin.readLineSync()!;
+                var category = await _findCategoryByIcon(icon);
+                if (category.id != 0) {
+                  print(
+                      '🔴 categoty already exists: category: ${category.name} (id: ${category.id}) - icon ${category.icon}');
+                } else {
+                  //POSSO CREARNE UNA NUOVA
+                  category = Category()
+                    ..id = Random(999).nextInt(9999)
+                    ..name = name;
+                  //RPC CALLING THE SERVER METHOD
+                  response = await stub!.createCategory(category);
+                  print(
+                      '✅ category created: name ${category.name} (id: ${category.id}) - icon ${category.icon}');
+                }
               }
               break;
             case 8:
               break;
             case 9:
+              print('Enter category name');
+              var name = stdin.readLineSync()!;
+              var category = await _findCategoryByName(name);
+              if (category.id != 0) {
+                print(
+                    '✅ category found | name ${category.name} | id ${category.id} | icon ${category.icon}');
+              } else {
+                print(
+                    '🔴 category not found | no category matches the name $name');
+              }
               break;
             case 10:
               break;
@@ -104,6 +123,12 @@ class Client {
 
     await channel!.shutdown(); //FERMO IL CLIENT ALLA FINE
   } //fine start client
+
+  Future<Category> _findCategoryByIcon(String icon) async {
+    var cat = Category()..icon = icon;
+    cat = await stub!.getCategory(cat);
+    return cat;
+  }
 
   Future<Category> _findCategoryByName(String name) async {
     var category = Category()..name = name; //mi serve per chiedere al server

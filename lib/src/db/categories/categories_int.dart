@@ -5,6 +5,7 @@ abstract class ICategoriesServices {
 
   Category? getCategoryByName(String name) {}
   Category? getCategoryById(int id) {}
+  Category? getCategoryByIcon(String icon);
 
   Category? createCategory(Category category) {}
   Category? editCategory(Category category) {}

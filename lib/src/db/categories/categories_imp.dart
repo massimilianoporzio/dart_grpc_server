@@ -32,13 +32,33 @@ class CategoriesServices implements ICategoriesServices {
 
   @override
   Category? getCategoryById(int id) {
-    // TODO: implement getCategoryById
-    throw UnimplementedError();
+    var cat = Category(); //deafult values (id 0 name e icon '')
+    var result = categories.where((element) => element['id'] == id).toList();
+    if (result.isNotEmpty) {
+      cat = helper.getCategoryFromMap(result.first);
+    }
+    return cat;
   }
 
   @override
   Category? getCategoryByName(String name) {
-    // TODO: implement getCategoryByName
-    throw UnimplementedError();
+    var cat = Category(); //deafult values (id 0 name e icon '')
+    var result =
+        categories.where((element) => element['name'] == name).toList();
+    if (result.isNotEmpty) {
+      cat = helper.getCategoryFromMap(result.first);
+    }
+    return cat;
+  }
+
+  @override
+  Category? getCategoryByIcon(String icon) {
+    var cat = Category();
+    var result =
+        categories.where((element) => element['icon'] == icon).toList();
+    if (result.isNotEmpty) {
+      cat = helper.getCategoryFromMap(result.first);
+    }
+    return cat;
   }
 }
