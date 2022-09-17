@@ -37,6 +37,7 @@ class Client {
 
         var option = int.tryParse(stdin.readLineSync()!);
         if (option == null) {
+          print('invalid integer 😓');
         } else {
           switch (option) {
             case 1:
